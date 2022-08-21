@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>列表的排序</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>人员列表</h2>
+        <button @click="updateMei">更新马冬梅的信息</button>
+        
+        <ul>
+            <li v-for="(p,index) of persons" :key="p.id">
+                {{p.name}}-{{p.age}}-{{p.sex}}
+                <!-- <input type="text"> -->
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                persons:[
+                        {id:'1001',name:"马冬梅",age:34,sex:"女"},
+                        {id:'1002',name:"周冬雨",age:32,sex:"女"},
+                        {id:'1003',name:"周杰伦",age:12,sex:"男"},
+                        {id:'1004',name:"温兆伦",age:54,sex:"男"},
+                ],
+                
+            },
+            methods: {
+                updateMei(){
+                    // this.persons[0].name='马老师',
+                    // this.persons[0].age=50,
+                    // this.persons[0].sex='男'
+                    // this.persons[0] = {id:'1001',name:"马老师",age:50,sex:"男"}
+
+                    this.persons.splice(0,1,{id:'1001',name:"马老师",age:50,sex:"男"})
+                }
+            },
+           
+            
+
+        })
+    </script>
+</body>
+</html>

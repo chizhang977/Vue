@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 源数据
+        let person = {
+            name:'张三',
+            age:18
+        }
+        //模拟Vue2中实现的响应式
+       // let p = {}
+        //#region
+        /* Object.defineProperty(p,'name',{
+            configurable:true,
+            get(){//有人读取时调用
+                console.log('有人读取了name属性')
+                return person.name
+            },
+            set(value){
+                console.log('有人修改了name属性')
+                return person.name = value
+            }
+        })
+        Object.defineProperty(p,'age',{
+            configurable:true,
+            get(){//有人读取时调用
+                console.log('有人读取了age属性')
+                return person.age
+            },
+            set(value){
+                console.log('有人修改了age属性')
+                return person.age = value
+            }
+        }) */
+        //#endregion
+        // 模拟Vue3中实现响应式
+        /* Vue2中的响应式的实现是通过(对象)Object.defineProperty()来实现的
+           Vue3中的响应式的实现:
+            Proxy代理对象来劫持数据的改变，
+            Reflect对象来对源数据进行修改
+            两者共同完成响应式
+        */
+       //#region
+       /* 
+        const p = new Proxy(person,{
+            get(target,propName){
+                console.log(`有人读取了p身上的${propName}属性`)
+                return Reflect.get(target,propName)
+            },
+            set(target,propName,value){
+                console.log(`有人修改了p身上的${propName}属性`)
+                return Reflect.set(target,propName,value)
+            },
+            deleteProperty(target,propName){
+                console.log(`p的${propName}的属性已经被删除`)
+                return Reflect.deleteProperty(target.propName)
+            }
+        })
+        */ 
+        //#endregion
+
+
+        
+    </script>
+</body>
+</html>

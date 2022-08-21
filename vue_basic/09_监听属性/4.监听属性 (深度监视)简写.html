@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天气案例-深度监视</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    
+    <div id="root">
+      <h2>今天天气很{{info}}</h2>
+      <button @click="changeWeather" >切换天气</button>
+      <hr/>
+
+    </div>
+    
+    <script>
+       Vue.config.productionTip = false
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                isHot:true,
+                numbers:{
+                    a:1,
+                    b:1,
+                    c:{
+                        d:{
+                            e:100
+                        }
+                    }
+                }
+            },
+            methods: {
+                changeWeather(){
+                    return this.isHot = !this.isHot
+                }
+            },
+            computed:{
+                info(){
+                    return this.isHot ? "炎热" : "凉爽"
+                }
+            },
+            watch:{
+                // isHot:{
+                //     handler(newValue,oldValue){
+                //         console.log("isHot发生了变化",newValue,oldValue)
+                //     }
+                // },
+                // 简写
+                // isHot(newValue,oldValue){
+                //     console.log("isHot发生了变化",newValue,oldValue)
+                // }
+
+
+
+
+                // 'numbers.a':{
+                //     handler(){
+                //         console.log('numbers改变了')
+                //     }
+                // },
+                // 'numbers.b':{
+                //     handler(){
+                //         console.log('numbers改变了')
+                //     }
+                // }
+                // numbers:{
+                //     deep:true,//深度监视
+                //     handler(){
+                //         console.log('numbers改变了')
+                //     }
+                // }
+            }
+           
+        })
+    //    vm.$watch('isHot',{
+    //        immediate:true,//初始化时调用handler
+    //        deep:true,
+    //        handler(newValue,oldValue){
+    //         console.log("isHot发生了变化",newValue,oldValue)
+    //        }
+    //    })
+
+        vm.$watch('isHot',(newValue,oldValue)=>{
+            console.log("isHot发生了变化",newValue,oldValue)
+        })
+    </script>
+</body>
+</html>

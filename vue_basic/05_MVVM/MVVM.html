@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MVVM</title>
+    </head>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <body>
+        <!--
+            1. M：模型(Model) ：对应 data 中的数据
+	        2. V：视图(View) ：模板
+	        3. VM：视图模型(ViewModel) ： Vue 实例对象 
+            data中的所有属性，最后都出现在了vm上，
+		vm上的属性记忆VUe原型上所有属性，都可以在vue模板直接使用
+
+         -->
+        <div id="root">
+            <!--
+                 v:view视图,模板中代码 ,视图通过监听data中的数据来更新页面，这就是MVVM
+            
+            -->
+            <h1>学校名称:{{name}}</h1>
+            <h2>学校地址:{{address}}</h2>
+        </div>
+
+        <script>
+          const vm =   new Vue({ //VM:就是vue实例
+                el:'#root',
+                data:function(){//M:模型：就是data中的数据,data中的数据通过vue实例(VM)进行数据绑定到页面上。
+                    return{
+                        name:'cheng',
+                        address:'兰州'
+                    }
+                }
+            })
+            console.log(vm)
+        </script>
+    </body>
+</html>
